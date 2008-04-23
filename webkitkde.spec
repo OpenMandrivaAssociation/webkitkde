@@ -2,18 +2,18 @@
 
 Name:           webkitkde
 #TODO: Find a better summary
-Summary:        webkitkde
+Summary:        QtWebKit's kpart
 Version:        0.0
 Release:        %mkrel 0.%{svn}.1
 Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde/
 License:        LGPL v2+
-Group:          TODO
+Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
 
 %description
-webkitkde
+%name is a QtWebKit's kpart
 
 %files
 %defattr(-,root,root)
@@ -37,11 +37,11 @@ based on %name
 %_kde_includedir/KDE/WebKitKde/WebKitPart
 %_kde_includedir/KDE/WebKitKde/WebView
 %dir %_kde_includedir/webkitkde
+
 %_kde_includedir/webkitkde/webkitkde_export.h
 %_kde_includedir/webkitkde/webkitpart.h
 %_kde_includedir/webkitkde/webkitview.h
 %_kde_appsdir/cmake/modules/FindWebKitKde.cmake
-
 
 #-----------------------------------------------------------------------------
 
@@ -64,10 +64,8 @@ KDE 4 library.
 
 #--------------------------------------------------------------------
 
-
 %prep
 %setup -q -n %name
-
 
 %build
 %cmake_kde4
