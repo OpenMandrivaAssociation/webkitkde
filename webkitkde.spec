@@ -4,7 +4,7 @@ Name:           webkitkde
 #TODO: Find a better summary
 Summary:        QtWebKit's kpart
 Version:        0.0
-Release:        %mkrel 0.%{svn}.1
+Release:        %mkrel 0.%{svn}.2
 Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde/
 License:        LGPL v2+
 Group:          Networking/WWW
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
+Requires: %name
 
 %description  devel
 This package contains header files needed if you wish to build applications
