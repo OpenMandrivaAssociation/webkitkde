@@ -10,7 +10,6 @@ License:        LGPL v2+
 Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Buildrequires:  kdelibs4-devel
-BuildRequires:  qtwebkitlib
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
 
