@@ -18,7 +18,7 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
 %files
 %defattr(-,root,root)
-%_kde_appsdir/webkitpart/webkitpart.rc
+%_kde_appsdir/webkitpart
 %_kde_datadir/kde4/services/webkitpart.desktop
 %_kde_libdir/kde4/webkitkdepart.so
 
