@@ -57,8 +57,12 @@ Group: System/Libraries
 %description -n %libwebkitkde
 KDE 4 library.
 
+%if %mdkversion < 200900
 %post -n %libwebkitkde -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libwebkitkde -p /sbin/ldconfig
+%endif
 
 %files -n %libwebkitkde
 %defattr(-,root,root)
