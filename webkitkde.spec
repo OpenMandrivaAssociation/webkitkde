@@ -1,4 +1,4 @@
-%define         svn   799548
+%define         svn   819668
 
 Name:           webkitkde
 #TODO: Find a better summary
@@ -21,6 +21,7 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 %_kde_appsdir/webkitpart
 %_kde_datadir/kde4/services/webkitpart.desktop
 %_kde_libdir/kde4/webkitkdepart.so
+%_kde_iconsdir/*/*/*/*
 
 #--------------------------------------------------------------------
 %package devel
