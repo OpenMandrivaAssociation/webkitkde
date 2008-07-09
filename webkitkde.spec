@@ -1,4 +1,4 @@
-%define         svn   819668
+%define         svn   826469
 
 Name:           webkitkde
 #TODO: Find a better summary
@@ -24,6 +24,7 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 %_kde_iconsdir/*/*/*/*
 
 #--------------------------------------------------------------------
+
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
@@ -36,14 +37,7 @@ based on %name
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/libwebkitkde.so
-%dir %_kde_includedir/KDE/WebKitKde
-%_kde_includedir/KDE/WebKitKde/WebKitPart
-%_kde_includedir/KDE/WebKitKde/WebView
-%dir %_kde_includedir/webkitkde
-
-%_kde_includedir/webkitkde/webkitkde_export.h
-%_kde_includedir/webkitkde/webkitpart.h
-%_kde_includedir/webkitkde/webkitview.h
+%_kde_includedir/*
 %_kde_appsdir/cmake/modules/FindWebKitKde.cmake
 
 #-----------------------------------------------------------------------------
@@ -79,8 +73,7 @@ KDE 4 library.
 %make
 
 %install
-cd build
-make DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean
-%{__rm} -rf "%{buildroot}"
+rm -rf %buildroot
