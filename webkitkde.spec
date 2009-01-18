@@ -1,17 +1,16 @@
-%define         svn   826469
+%define         svn   912736
 
 Name:           webkitkde
 #TODO: Find a better summary
 Summary:        QtWebKit's kpart
 Version:        0.0
-Release:        %mkrel 0.%{svn}.4
+Release:        %mkrel 0.%{svn}.1
 Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde/
-License:        LGPL v2+
+License:        LGPLv2+
 Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Buildrequires:  kdelibs4-devel
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
-
 
 %description
 %name is a QtWebKit's kpart
@@ -22,23 +21,6 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 %_kde_datadir/kde4/services/webkitpart.desktop
 %_kde_libdir/kde4/webkitkdepart.so
 %_kde_iconsdir/*/*/*/*
-
-#--------------------------------------------------------------------
-
-%package devel
-Summary: Devel stuff for %name
-Group: Development/KDE and Qt
-Requires: %name
-
-%description  devel
-This package contains header files needed if you wish to build applications
-based on %name
-
-%files devel
-%defattr(-,root,root)
-%_kde_libdir/libwebkitkde.so
-%_kde_includedir/*
-%_kde_appsdir/cmake/modules/FindWebKitKde.cmake
 
 #-----------------------------------------------------------------------------
 
@@ -63,7 +45,74 @@ KDE 4 library.
 %defattr(-,root,root)
 %_kde_libdir/libwebkitkde.so.%{libwebkitkde_major}*
 
+#-----------------------------------------------------------------------------
+
+%define libkdewebkit_major 1
+%define libkdewebkit %mklibname kdewebkit %{libkdewebkit_major}
+
+%package -n %libkdewebkit
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkdewebkit
+KDE 4 library.
+
+%if %mdkversion < 200900
+%post -n %libkdewebkit -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %libkdewebkit -p /sbin/ldconfig
+%endif
+
+%files -n %libkdewebkit
+%defattr(-,root,root)
+%_kde_libdir/libkdewebkit.so.%{libkdewebkit_major}*
+
+#-----------------------------------------------------------------------------
+
+%define libkdenetwork_major 1
+%define libkdenetwork %mklibname kdenetwork %{libkdenetwork_major}
+
+%package -n %libkdenetwork
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkdenetwork
+KDE 4 library.
+
+%if %mdkversion < 200900
+%post -n %libkdenetwork -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %libkdenetwork -p /sbin/ldconfig
+%endif
+
+%files -n %libkdenetwork
+%defattr(-,root,root)
+%_kde_libdir/libkdenetwork.so.%{libkdenetwork_major}*
+
 #--------------------------------------------------------------------
+%package devel
+Summary: Devel stuff for %name
+Group: Development/KDE and Qt
+Requires: %libwebkitkde = %version-%release
+Requires: %libkdewebkit = %version-%release
+Requires: %libkdenetwork = %version-%release
+
+%description  devel
+This package contains header files needed if you wish to build applications
+based on %name
+
+%files devel
+%defattr(-,root,root)
+%_kde_libdir/*.so
+%_kde_includedir/KDE/*
+%_kde_includedir/webkitkde
+%_kde_includedir/kdenetwork
+%_kde_includedir/kdewebkit
+%_kde_appsdir/cmake/modules/*.cmake
+
+#-----------------------------------------------------------------------------
 
 %prep
 %setup -q -n %name
