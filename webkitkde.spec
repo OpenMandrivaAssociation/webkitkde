@@ -24,6 +24,23 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
 #-----------------------------------------------------------------------------
 
+%define libkdenetwork_major 1
+%define libkdenetwork %mklibname kdenetwork %{libkdenetwork_major}
+
+%package -n %libkdenetwork
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkdenetwork
+KDE 4 library.
+
+%files -n %libkdenetwork
+%defattr(-,root,root)
+%_kde_libdir/libkdenetwork.so.%{libkdenetwork_major}*
+
+
+#-----------------------------------------------------------------------------
+
 %define libwebkitkde_major 1
 %define libwebkitkde %mklibname webkitkde %{libwebkitkde_major}
 
@@ -33,13 +50,6 @@ Group: System/Libraries
 
 %description -n %libwebkitkde
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libwebkitkde -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libwebkitkde -p /sbin/ldconfig
-%endif
 
 %files -n %libwebkitkde
 %defattr(-,root,root)
@@ -74,6 +84,7 @@ Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: %libwebkitkde = %version-%release
 Requires: %libkdewebkit = %version-%release
+Requires: %libkdenetwork = %version-%release
 
 %description  devel
 This package contains header files needed if you wish to build applications
@@ -82,9 +93,7 @@ based on %name
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
-%_kde_includedir/KDE/*
-%_kde_includedir/webkitkde
-%_kde_includedir/kdewebkit
+%_kde_includedir/*
 %_kde_appsdir/cmake/modules/*.cmake
 
 #-----------------------------------------------------------------------------
