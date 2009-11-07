@@ -1,4 +1,4 @@
-%define         svn   972995
+%define         svn   1046057
 
 Name:           webkitkde
 #TODO: Find a better summary
@@ -21,23 +21,6 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 %_kde_datadir/kde4/services/webkitpart.desktop
 %_kde_libdir/kde4/webkitkdepart.so
 %_kde_iconsdir/*/*/*/*
-
-#-----------------------------------------------------------------------------
-
-%define libkdenetwork_major 1
-%define libkdenetwork %mklibname kdenetwork %{libkdenetwork_major}
-
-%package -n %libkdenetwork
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkdenetwork
-KDE 4 library.
-
-%files -n %libkdenetwork
-%defattr(-,root,root)
-%_kde_libdir/libkdenetwork.so.%{libkdenetwork_major}*
-
 
 #-----------------------------------------------------------------------------
 
@@ -67,13 +50,6 @@ Group: System/Libraries
 %description -n %libkdewebkit
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkdewebkit -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkdewebkit -p /sbin/ldconfig
-%endif
-
 %files -n %libkdewebkit
 %defattr(-,root,root)
 %_kde_libdir/libkdewebkit.so.%{libkdewebkit_major}*
@@ -84,7 +60,6 @@ Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: %libwebkitkde = %version-%release
 Requires: %libkdewebkit = %version-%release
-Requires: %libkdenetwork = %version-%release
 
 %description  devel
 This package contains header files needed if you wish to build applications
