@@ -4,8 +4,8 @@ Name:           webkitkde
 #TODO: Find a better summary
 Summary:        QtWebKit's kpart
 Version:        0.0
-Release:        %mkrel 0.%{svn}.1
-Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde/
+Release:        %mkrel 0.%{svn}.2
+Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde
 License:        LGPLv2+
 Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -67,8 +67,8 @@ based on %name
 
 %files devel
 %defattr(-,root,root)
-%_kde_libdir/libkdewebkit.so
-%exclude %_kde_libdir/libwebkitkde.so
+%exclude %_kde_libdir/libkdewebkit.so
+%_kde_libdir/libwebkitkde.so
 %_kde_includedir/*
 %_kde_appsdir/cmake/modules/*.cmake
 
