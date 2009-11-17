@@ -1,4 +1,4 @@
-%define         svn   1046057
+%define         svn   1050148
 
 Name:           webkitkde
 #TODO: Find a better summary
@@ -67,7 +67,8 @@ based on %name
 
 %files devel
 %defattr(-,root,root)
-%_kde_libdir/*.so
+%_kde_libdir/libkdewebkit.so
+%exclude %_kde_libdir/libwebkitkde.so
 %_kde_includedir/*
 %_kde_appsdir/cmake/modules/*.cmake
 
