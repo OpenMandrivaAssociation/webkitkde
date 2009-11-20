@@ -4,7 +4,7 @@ Name:           webkitkde
 #TODO: Find a better summary
 Summary:        QtWebKit's kpart
 Version:        0.0
-Release:        %mkrel 0.%{svn}.2
+Release:        %mkrel 0.%{svn}.3
 Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde
 License:        LGPLv2+
 Group:          Networking/WWW
@@ -67,7 +67,15 @@ based on %name
 
 %files devel
 %defattr(-,root,root)
+#Those files are excluded because they are in kdelibs already
 %exclude %_kde_libdir/libkdewebkit.so
+%exclude %_kde_includedir/KDE/KWebPage
+%exclude %_kde_includedir/KDE/KWebPluginFactory
+%exclude %_kde_includedir/KDE/KWebView
+%exclude %_kde_includedir/kwebpage.h
+%exclude %_kde_includedir/kwebpluginfactory.h
+%exclude %_kde_includedir/kwebview.h
+
 %_kde_libdir/libwebkitkde.so
 %_kde_includedir/*
 %_kde_appsdir/cmake/modules/*.cmake
