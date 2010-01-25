@@ -1,10 +1,10 @@
-%define         svn   1050148
+%define         svn  1079772
 
 Name:           webkitkde
 #TODO: Find a better summary
 Summary:        QtWebKit's kpart
 Version:        0.0
-Release:        %mkrel 0.%{svn}.3
+Release:        %mkrel 0.%{svn}.1
 Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde
 License:        LGPLv2+
 Group:          Networking/WWW
@@ -17,49 +17,32 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
 %files
 %defattr(-,root,root)
-%_kde_appsdir/webkitpart
-%_kde_datadir/kde4/services/webkitpart.desktop
-%_kde_libdir/kde4/webkitkdepart.so
+%_kde_appsdir/kwebkitpart
+%_kde_datadir/kde4/services/kwebkitpart.desktop
+%_kde_libdir/kde4/*
 %_kde_iconsdir/*/*/*/*
 
 #-----------------------------------------------------------------------------
 
-%define libwebkitkde_major 1
-%define libwebkitkde %mklibname webkitkde %{libwebkitkde_major}
+%define libkwebkit_major 1
+%define libkwebkit %mklibname kwebkit %{libkwebkit_major}
 
-%package -n %libwebkitkde
+%package -n %libkwebkit
 Summary: KDE 4 library
 Group: System/Libraries
 
-%description -n %libwebkitkde
+%description -n %libkwebkit
 KDE 4 library.
 
-%files -n %libwebkitkde
+%files -n %libkwebkit
 %defattr(-,root,root)
-%_kde_libdir/libwebkitkde.so.%{libwebkitkde_major}*
-
-#-----------------------------------------------------------------------------
-
-%define libkdewebkit_major 1
-%define libkdewebkit %mklibname kdewebkit %{libkdewebkit_major}
-
-%package -n %libkdewebkit
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkdewebkit
-KDE 4 library.
-
-%files -n %libkdewebkit
-%defattr(-,root,root)
-%_kde_libdir/libkdewebkit.so.%{libkdewebkit_major}*
+%_kde_libdir/libkwebkit.so.%{libkwebkit_major}*
 
 #-----------------------------------------------------------------------------
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
-Requires: %libwebkitkde = %version-%release
-Requires: %libkdewebkit = %version-%release
+Requires: %libkwebkit = %version-%release
 
 %description  devel
 This package contains header files needed if you wish to build applications
@@ -67,16 +50,7 @@ based on %name
 
 %files devel
 %defattr(-,root,root)
-#Those files are excluded because they are in kdelibs already
-%exclude %_kde_libdir/libkdewebkit.so
-%exclude %_kde_includedir/KDE/KWebPage
-%exclude %_kde_includedir/KDE/KWebPluginFactory
-%exclude %_kde_includedir/KDE/KWebView
-%exclude %_kde_includedir/kwebpage.h
-%exclude %_kde_includedir/kwebpluginfactory.h
-%exclude %_kde_includedir/kwebview.h
-
-%_kde_libdir/libwebkitkde.so
+%_kde_libdir/libkwebkit.so
 %_kde_includedir/*
 %_kde_appsdir/cmake/modules/*.cmake
 
