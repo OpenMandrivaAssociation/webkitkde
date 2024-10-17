@@ -5,7 +5,7 @@ Name:           webkitkde
 Summary:        QtWebKit's kpart
 Version:        0.0
 Release:        %mkrel 0.%{svn}.3
-Url:            http://websvn.kde.org/trunk/playground/libs/webkitkde
+Url:            https://websvn.kde.org/trunk/playground/libs/webkitkde
 License:        LGPLv2+
 Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
