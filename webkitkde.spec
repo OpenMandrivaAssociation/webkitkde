@@ -9,6 +9,7 @@ Url:            https://websvn.kde.org/trunk/playground/libs/webkitkde
 License:        LGPLv2+
 Group:          Networking/WWW
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:	make
 Buildrequires:  kdelibs4-devel >= 2:4.2.69
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
 
